@@ -1,0 +1,61 @@
+#############
+#  BUILDER  # 
+#############
+
+# Obtiene la imagen oficial
+FROM python:3.9-slim-buster as builder
+
+# establecemos el directorio de trabajo
+WORKDIR /usr/src/app
+
+# Se establecen algunas variables de entorno
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
+# Se instalan dependencias del sistema
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends gcc
+
+# lint 
+RUN pip install --upgrade pip
+RUN pip install flake8
+COPY . /usr/src/app/
+# instalacion dependencias python
+COPY ./requirements.txt .
+RUN pip wheel --no-cache-dir --no-deps --wheel-dir /usr/src/app/wheels -r requirements.txt
+
+###########
+#  FINAL  #
+###########
+
+#Descarga de la imagen
+FROM python:3.9-slim-buster
+
+#  Creamos el directorio para la aplicacion
+RUN mkdir -p /home/app
+
+# creacion del usuario de app
+RUN addgroup --system app && adduser --system app --group
+
+# creacion de los directorios
+ENV HOME=/home/app
+ENV APP_HOME=/home/app/web
+ENV mkdir $APP_HOME
+WORKDIR $APP_HOME
+
+# install dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends netcat
+COPY --from=builder /usr/src/app/wheels /wheels
+COPY --from=builder /usr/src/app/requirements.txt .
+RUN pip install --upgrade pip
+RUN pip install --no-cache /wheels/*
+
+#copy project
+COPY . $APP_HOME
+
+# chown all the files to the app user
+RUN chown -R app:app $APP_HOME
+
+# Cambio de usuario
+USER app
+

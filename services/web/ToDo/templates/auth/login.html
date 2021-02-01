@@ -1,0 +1,21 @@
+{% extends "auth/base.html" %}
+
+{% block header %}
+    <h1>{% block title %}Iniciar sesion{% endblock %}</h1>
+    <h2>Bienvenido, Ingrese sus credenciales.</h2>
+{% endblock %}
+
+{% block content %}
+    <form class="auth" method="POST">
+        <label class="in" for="username">Username</label>
+        <br>
+        <input name="username" id="username" required/>
+        <br>
+        <label class="in" for="password">Password</label>
+        <br>
+        <input type="password" name="password" id="password" required/>
+        <br>
+        <input type="submit" value="Iniciar Sesion" id="submit">
+        <a href="{{ url_for("auth.register") }}">Crear una cuenta</a>
+    </form>
+{% endblock %}

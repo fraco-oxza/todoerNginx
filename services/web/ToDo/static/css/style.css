@@ -1,0 +1,134 @@
+body {
+    /* UiGradients */
+    background: #2b5876;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #4e4376, #2b5876);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #4e4376, #2b5876); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    /* text-align: center; */
+    font-family: Whitney,Helvetica Neue,Helvetica,Arial,sans-serif;
+}
+
+.barra ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 75%;
+    background-color: #333;
+}
+
+.barra li {
+    float: right;
+}
+
+.barra li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    text-decoration: none;
+    transition: 0.3s 0.2s;
+}
+
+.barra li a:hover {
+    background-color: #000;
+}
+
+.barra li span {
+    display: block;
+    color: yellowgreen;
+    text-align: center;
+    padding: 20px;
+    text-align: none;
+}
+
+.barra h1 {
+    position: fixed;
+    width: 25%;
+    float: left;
+    padding: 15.25px 0px;
+    margin: 0;
+    left: 0;
+    top: 0;
+    background-color: yellowgreen;
+    text-align: center;
+    text-decoration: none;
+}
+
+#titulo { 
+    text-decoration: none;
+    color: black;
+}
+
+.content {
+    display: inline-block; 
+    box-shadow: 2px 8px 8px rgba(0, 0, 0, 0.2);
+    margin-top: 70px;
+    min-width: 18rem;
+    max-width: 95%;
+    max-height: 95%; 
+    padding: 1px 20px;
+    padding-bottom: 15px;
+    background-color: #36393f;
+    border-radius: 10px;
+    color: white;
+}
+
+.todoes { 
+    
+}
+
+.auth {
+    text-align: center;
+}
+
+.auth .in{
+    border: none;
+    margin: 10px 0px;
+    margin-bottom: 20px;
+    width: 100%;
+    background-color: #303338;
+    height: 30px;
+}
+
+#submit {
+    position: relative;
+    border-radius: 6px;
+    padding: 15px 0px;
+    width: 90%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #7289da;
+    color: white;
+    text-align: center;
+    transition: 0.3s 0.1s;
+}
+
+#submit:hover {
+    background-color: #6679be;
+    cursor: pointer;
+}
+
+#submit:active {
+    background-color: #5768a8;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+}
+
+.content h1 {
+    margin-bottom: 3px;
+    font-size: 10;
+}
+
+.content h2 {
+    margin-top: 3px;
+    margin-bottom: 15px;
+    font-size: 0.8rem;
+    color: #686b70;
+}
+
